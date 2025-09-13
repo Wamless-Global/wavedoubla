@@ -46,7 +46,7 @@ export default function Footer() {
 								<div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">
 									<i className="ri-mail-fill text-sm text-white"></i>
 								</div>
-								<span>support@Wavedoubla.com</span>
+								<span>support@wavedoubla.com</span>
 							</div>
 							<div className="flex items-center space-x-3 text-gray-300">
 								<div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-pink-500 rounded-lg flex items-center justify-center">

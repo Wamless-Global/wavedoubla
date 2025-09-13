@@ -104,7 +104,7 @@ export default function TeamSection() {
 						</div>
 
 						<p className="text-xl text-gray-300 mb-8 leading-relaxed">
-							Unlock the power of our <span className="font-semibold text-blue-600">5-Generation Referral Bonus</span>! When you invite friends to join Monidoubla, you earn bonuses not just from your direct referrals, but also from the people they invite—up to five generations deep.
+							Unlock the power of our <span className="font-semibold text-blue-600">5-Generation Referral Bonus</span>! When you invite friends to join Wavedoubla, you earn bonuses not just from your direct referrals, but also from the people they invite—up to five generations deep.
 						</p>
 						<p className="text-xl text-gray-300 mb-8 leading-relaxed">
 							Grow your network and multiply your earnings: every new member in your referral tree can contribute to your bonus, whether you invited them directly or they joined through your extended network. The more your community grows, the more you benefit!

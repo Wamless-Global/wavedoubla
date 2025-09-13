@@ -48,8 +48,8 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
 	title: {
-		default: 'Monidoubla',
-		template: `%s | Monidoubla`,
+		default: 'Wavedoubla',
+		template: `%s | Wavedoubla`,
 	},
 	description: 'A comprehensive financial platform for GH and PH requests',
 };

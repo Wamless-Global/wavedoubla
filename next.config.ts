@@ -17,11 +17,11 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: 'https',
-				hostname: 'jabyihvrzgceepcgjtqg.supabase.co',
+				hostname: 'bjndfntjhbevrwwkufzo.supabase.co',
 			},
 			{
 				protocol: 'https',
-				hostname: 'auth.monidoublagh.com',
+				hostname: 'auth.wavedoubla.com',
 			},
 			{
 				protocol: 'https',

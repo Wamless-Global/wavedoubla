@@ -3,26 +3,26 @@ import { useTheme } from 'next-themes';
 import { CustomLink } from './CustomLink';
 
 const sizeMap = {
-	xs: 30,
-	sm: 60,
-	md: 90,
-	lg: 120,
-	xl: 150,
-	xxl: 200,
+	xs: 20,
+	sm: 50,
+	md: 80,
+	lg: 110,
+	xl: 140,
+	xxl: 190,
 };
 
 const logoVariants = {
-	dark: '/images/logox.png?new=2',
-	default: '/images/logox.png?new=2',
-	darkIcon: '/images/logo-icon.png?new=2',
-	lightIcon: '/images/logo-icon-white.png?new=2',
-	light: '/images/logoy.png?new=2',
+	dark: '/images/wavedoubla-logo.png?new=2',
+	default: '/images/wavedoubla-logo.png?new=2',
+	darkIcon: '/images/wavedoubla-logo.png?new=2',
+	lightIcon: '/images/wavedoubla-logo.png?new=2',
+	light: '/images/wavedoubla-logo.png?new=2',
 };
 
 export default function Logo({
 	size = 'lg',
 	variant = 'light',
-	alt = 'Monidoubla Logo',
+	alt = 'Wavedoubla Logo',
 	style,
 	className,
 	...props
