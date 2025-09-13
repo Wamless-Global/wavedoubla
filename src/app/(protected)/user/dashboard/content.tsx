@@ -1,19 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { CreditCard } from '@/components/CreditCard';
-import { TransactionList } from '@/components/TransactionList';
-import { DashboardSkeleton } from '@/components/LoadingSkeleton';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { getCurrentUser } from '@/lib/userUtils';
-import { CustomLink } from '@/components/CustomLink';
-import { logger } from '@/lib/logger';
-import ProvideHelpPage from '../provide-help/content';
-import { useRef } from 'react';
 import { fetchWithAuth } from '@/lib/fetchWithAuth';
 import { handleFetchMessage } from '@/lib/helpers';
 import { toast } from 'sonner';
+import { BalanceSection } from '@/components/dashboard/BalanceSection';
+import { RequestCard } from '@/components/dashboard/RequestCard';
+import { TestimonialCard } from '@/components/dashboard/TestimonialCard';
+import { DashboardSkeleton } from '@/components/LoadingSkeleton';
+import { logger } from '@/lib/logger';
+import { CreditCard } from '@/components/CreditCard';
+import { CustomLink } from '@/components/CustomLink';
+import { Button } from '@/components/ui/button';
+import ProvideHelpPage from '../provide-help/content';
+import { TransactionList } from '@/components/TransactionList';
 
 // Custom modal for testimonials, styled like ConfirmationModal
 function TestimonialModal({ isOpen, onClose, userName, date, content, videoUrl, avatarUrl }: { isOpen: boolean; onClose: () => void; userName: string; date: string; content: string; videoUrl?: string; avatarUrl?: string | null }) {

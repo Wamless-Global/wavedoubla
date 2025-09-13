@@ -7,35 +7,52 @@ module.exports = {
 	content: ['./src/{app,components,libs,pages,hooks}/**/*.{html,js,ts,jsx,tsx}'],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['Clash Display', ...fontFamily.fontFamily.sans],
+				heading: ['Clash Display', ...fontFamily.fontFamily.sans],
+			},
+			borderRadius: {
+				'4xl': '2rem',
+				'3xl': '1.5rem',
+				'2xl': '1rem',
+			},
+			spacing: {
+				18: '4.5rem',
+				22: '5.5rem',
+			},
 			colors: {
-				border: 'oklch(var(--border))',
-				input: 'oklch(var(--input))',
-				ring: 'oklch(var(--ring))',
-				background: 'oklch(var(--background))',
-				foreground: 'oklch(var(--foreground))',
+				border: '#E5E7EB',
+				input: '#E5E7EB',
+				ring: '#00BD7E',
+				background: '#F3F4F6',
+				foreground: '#111827',
+				success: {
+					DEFAULT: '#00BD7E',
+					foreground: '#FFFFFF',
+				},
 				primary: {
-					DEFAULT: 'oklch(var(--primary))',
-					foreground: 'oklch(var(--primary-foreground))',
+					DEFAULT: '#4285F4',
+					foreground: '#FFFFFF',
 				},
 				secondary: {
-					DEFAULT: 'oklch(var(--secondary))',
-					foreground: 'oklch(var(--secondary-foreground))',
+					DEFAULT: '#C261FE',
+					foreground: '#FFFFFF',
 				},
 				destructive: {
-					DEFAULT: 'oklch(var(--destructive))',
-					// foreground: 'oklch(var(--destructive-foreground))', // Assuming you might add this variable
+					DEFAULT: '#EF4444',
+					foreground: '#FFFFFF',
 				},
 				muted: {
-					DEFAULT: 'oklch(var(--muted))',
-					foreground: 'oklch(var(--muted-foreground))',
+					DEFAULT: '#F3F4F6',
+					foreground: '#6B7280',
 				},
 				accent: {
-					DEFAULT: 'oklch(var(--accent))',
-					foreground: 'oklch(var(--accent-foreground))',
+					DEFAULT: '#F3F4F6',
+					foreground: '#111827',
 				},
 				popover: {
-					DEFAULT: 'oklch(var(--popover))',
-					foreground: 'oklch(var(--popover-foreground))',
+					DEFAULT: '#FFFFFF',
+					foreground: '#111827',
 				},
 				card: {
 					DEFAULT: 'oklch(var(--card))',

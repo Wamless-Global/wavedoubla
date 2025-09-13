@@ -3,9 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
-.bg-card {
-	@apply bg-white dark:bg-gray-950;
+@layer base {
+	:root {
+		@apply antialiased;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@layer components {
+	.card {
+		@apply bg-white rounded-2xl shadow-sm border border-border/5 p-6 transition-all duration-200;
+	}
+
+	.balance-card {
+		@apply card hover:shadow-md;
+	}
+
+	.card-success {
+		@apply bg-success text-success-foreground;
+	}
+
+	.card-primary {
+		@apply bg-primary text-primary-foreground;
+	}
+
+	.card-secondary {
+		@apply bg-secondary text-secondary-foreground;
+	}
+
+	.heading-1 {
+		@apply font-heading text-3xl font-semibold tracking-tight;
+	}
+
+	.heading-2 {
+		@apply font-heading text-2xl font-medium tracking-tight;
+	}
+
+	.heading-3 {
+		@apply font-heading text-xl font-medium tracking-tight;
+	}
 }
 
 /* Custom NProgress styles */

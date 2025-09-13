@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import Logo from './Logo';
+import { motion } from 'framer-motion';
 
 interface AccountHeaderProps {
 	onMenuClick: () => void;
@@ -30,6 +31,7 @@ export function AccountHeader({ onMenuClick, onNotificationClick, unreadNotifica
 	const { theme, setTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 	const title = pageTitle[pathname as keyof typeof pageTitle] || 'Account';
+	const userName = 'Shuku Shaker'; // TODO: Get from user context
 
 	useEffect(() => {
 		setMounted(true);
@@ -57,59 +59,64 @@ export function AccountHeader({ onMenuClick, onNotificationClick, unreadNotifica
 		};
 	}, []);
 
-	if (!mounted) {
-		return (
-			<header className="bg-card border-b border-border px-4 lg:px-6 py-4">
-				<div className="flex items-center justify-between">
-					<div className="flex items-center gap-4">
-						<button onClick={onMenuClick} className="lg:hidden p-2 hover:bg-accent rounded-lg transition-colors">
-							<i className="ri-menu-line w-5 h-5 flex items-center justify-center text-foreground"></i>
-						</button>
+	const headerContent = (
+		<header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+			<div className="container flex h-16 items-center justify-between px-4">
+				{/* Left side - Logo and Title */}
+				<div className="flex items-center gap-6">
+					{/* Menu Button - Only visible on mobile */}
+					<motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={onMenuClick} className="lg:hidden p-2 text-gray-600 hover:text-gray-900 rounded-full hover:bg-gray-100 transition-colors">
+						<i className="ri-menu-line text-xl" />
+					</motion.button>
 
-						<h1 className="text-xl lg:text-2xl font-bold text-foreground">{title}</h1>
+					{/* Logo - Only visible on mobile */}
+					<div className="lg:hidden">
+						<Logo size="sm" variant="default" alt="" />
 					</div>
 
-					<div className="flex items-center gap-2">
-						<button className="p-2 hover:bg-accent rounded-lg transition-colors">
-							<i className="ri-sun-line w-5 h-5 flex items-center justify-center text-foreground"></i>
-						</button>
-
-						<button onClick={onNotificationClick} className="p-2 hover:bg-accent rounded-lg relative transition-colors">
-							<i className="ri-notification-3-line w-5 h-5 flex items-center justify-center text-foreground"></i>
-							<span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full bg-red-300 dark:bg-red-500 p-3 font-semibold flex justify-center items-center">{unreadNotifications}</span>
-						</button>
+					{/* Page Title - Hidden on mobile, shown on desktop */}
+					<div className="hidden lg:block">
+						<h1 className="text-xl font-heading font-semibold text-gray-900">{title}</h1>
 					</div>
-				</div>
-			</header>
-		);
-	}
 
-	return (
-		<header className="bg-card border-b border-border px-4 lg:px-6 py-4">
-			<div className="flex items-center justify-between">
-				<div className="flex items-center gap-4 relative">
-					<button onClick={onMenuClick} className="lg:hidden p-2 hover:bg-accent rounded-lg transition-colors">
-						<i className="ri-menu-line w-5 h-5 flex items-center justify-center text-foreground"></i>
-					</button>
-
-					<div className="flex items-center">
-						<Logo size="sm" variant="default" alt="" className="" />
-					</div>
-					<h1 className="text-xl lg:text-2xl font-bold text-foreground">{title}</h1>
-					<div id="google_translate_element" className=""></div>
+					{/* Google Translate */}
+					<div id="google_translate_element" className="hidden lg:block" />
 				</div>
 
-				<div className="flex items-center gap-2">
-					<button onClick={toggleTheme} className="p-2 hover:bg-accent rounded-lg transition-colors" title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
-						{theme === 'light' ? <i className="ri-moon-line w-5 h-5 flex items-center justify-center text-foreground"></i> : <i className="ri-sun-line w-5 h-5 flex items-center justify-center text-foreground"></i>}
-					</button>
+				{/* Right side - Navigation and Profile */}
+				<div className="flex items-center gap-4">
+					{/* Notification button */}
+					<motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={onNotificationClick} className="relative p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-gray-900 transition-colors">
+						<i className="ri-notification-3-line text-xl" />
+						{unreadNotifications > 0 && <span className="absolute -top-0.5 -right-0.5 min-w-[20px] h-5 bg-primary text-white text-xs font-medium rounded-full px-1.5 flex items-center justify-center">{unreadNotifications}</span>}
+					</motion.button>
 
-					<button onClick={onNotificationClick} className="p-2 hover:bg-accent rounded-lg relative transition-colors">
-						<i className="ri-notification-3-line w-5 h-5 flex items-center justify-center text-foreground"></i>
-						<span className="absolute -top-1 -right-1 w-3 h-3 bg-destructive rounded-full bg-red-300 dark:bg-red-500 p-3 font-bold flex justify-center items-center">{unreadNotifications}</span>
-					</button>
+					{/* User Profile */}
+					<div className="flex items-center gap-3 pl-2">
+						<div className="hidden md:flex flex-col items-end">
+							<span className="font-medium text-sm text-gray-900">Welcome back,</span>
+							<span className="text-sm text-gray-600">{userName}</span>
+						</div>
+						<motion.div whileHover={{ scale: 1.05 }} className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center cursor-pointer">
+							<span className="text-sm font-medium text-gray-900">{userName[0]}</span>
+						</motion.div>
+					</div>
+				</div>
+			</div>
+
+			{/* Mobile view - Page title shown below header */}
+			<div className="lg:hidden px-4 pb-3 -mt-1 bg-white border-b">
+				<h1 className="text-lg font-heading font-medium text-gray-900">{title}</h1>
+				<div className="mt-1">
+					<div id="google_translate_element_mobile" />
 				</div>
 			</div>
 		</header>
 	);
+
+	if (!mounted) {
+		return headerContent;
+	}
+
+	return headerContent;
 }
