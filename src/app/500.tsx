@@ -2,7 +2,6 @@
 
 import { CustomLink } from '@/components/CustomLink';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
 export default function ServerError() {
 	return (

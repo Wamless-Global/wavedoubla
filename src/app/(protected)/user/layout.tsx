@@ -13,28 +13,6 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
 	const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 	const [unreadNotifications, setUnreadNotifications] = useState(0);
 
-	useEffect(() => {
-		// Define the callback before loading script
-		window.googleTranslateElementInit = function () {
-			if (window.google?.translate?.TranslateElement) {
-				new window.google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-			}
-		};
-
-		// Prevent duplicate script appending
-		if (!document.getElementById('google-translate-script')) {
-			const script = document.createElement('script');
-			script.id = 'google-translate-script';
-			script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-			script.async = true;
-			document.body.appendChild(script);
-		}
-
-		return () => {
-			delete window.googleTranslateElementInit;
-		};
-	}, []);
-
 	const handleOverlayClick = () => {
 		setIsSidebarOpen(false);
 	};
@@ -60,11 +38,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
 				<div className="flex-1 flex flex-col min-w-0">
 					<AccountHeader onMenuClick={() => setIsSidebarOpen(true)} onNotificationClick={() => setIsNotificationOpen(true)} unreadNotifications={unreadNotifications} />
 
-					<main className="flex-1 overflow-auto pb-8 md:pb-12">
-						{children}
-
-						{/* <div id="google_translate_element" className=""></div> */}
-					</main>
+					<main className="flex-1 overflow-auto pb-8 md:pb-12">{children}</main>
 				</div>
 
 				{/* Notification Panel */}

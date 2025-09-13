@@ -9,58 +9,62 @@ export default function HowItWorksSection() {
 
 	const steps = [
 		{
-			icon: 'ri-user-add-line',
-			title: 'Create an Account',
-			description: 'Join our fast-growing community of donors and servers',
+			number: '01',
+			icon: 'ri-user-add-fill',
+			title: 'Create Account',
+			description: 'Sign up in minutes and join our trusted community of donors and recipients.',
 		},
 		{
-			icon: 'ri-money-dollar-circle-line',
-			title: 'Make a Donation',
-			description: 'Choose an amount and get matched to invest to another participant',
+			number: '02',
+			icon: 'ri-search-fill',
+			title: 'Explore Causes',
+			description: 'Browse verified campaigns and find causes that resonate with your values.',
 		},
 		{
-			icon: 'ri-hand-heart-line',
-			title: 'Get Matched to Get Paid',
-			description: 'Get matched to receive help from others in the system',
+			number: '03',
+			icon: 'ri-hand-heart-fill',
+			title: 'Make Impact',
+			description: 'Contribute securely and watch your donations create real-world change.',
 		},
 		{
-			icon: 'ri-coins-line',
-			title: 'Earn Through Referrals',
-			description: 'Earn direct and indirect multilevel bonuses',
+			number: '04',
+			icon: 'ri-trophy-fill',
+			title: 'Track Progress',
+			description: 'Monitor the impact of your contributions and celebrate achievements together.',
 		},
 	];
 
 	return (
-		<section className="py-12 sm:py-16 lg:py-20 bg-blue-600">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="text-center mb-12 sm:mb-16">
-					<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 px-2">How It Works</h2>
-					<p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto px-2">Understand the simple steps to start helping, earning, and growing within our trusted peer-to-peer community.</p>
+		<section className="py-24 px-6 bg-gray-800/50">
+			<div className="container mx-auto max-w-7xl">
+				<div className="text-center mb-16">
+					<h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+						How It <span className="bg-gradient-to-r from-orange-400 to-pink-500 bg-clip-text text-transparent">Works</span>
+					</h2>
+					<p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">Getting started is simple. Follow these four easy steps to begin making a difference in our community-driven donation platform.</p>
 				</div>
 
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{steps.map((step, index) => (
-						<div key={index} className="bg-white rounded-lg p-6 text-center shadow-lg">
-							<div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-								<i className={`${step.icon} text-blue-600 text-2xl`}></i>
+						<div key={index} className="relative group">
+							<div className="bg-gray-900/60 backdrop-blur-lg rounded-3xl p-8 border border-gray-700/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
+								{/* Step Number */}
+								<div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl flex items-center justify-center font-bold text-white text-lg shadow-lg">{step.number}</div>
+
+								{/* Icon */}
+								<div className="w-16 h-16 bg-gradient-to-r from-orange-400/20 to-pink-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+									<i className={`${step.icon} text-orange-400 text-2xl`}></i>
+								</div>
+
+								{/* Content */}
+								<h3 className="text-2xl font-bold text-white mb-4">{step.title}</h3>
+								<p className="text-gray-300 leading-relaxed">{step.description}</p>
+
+								{/* Decorative element */}
+								<div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-pink-500 rounded-b-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
 							</div>
-							<h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-							<p className="text-sm sm:text-base text-gray-600 leading-relaxed">{step.description}</p>
 						</div>
 					))}
-				</div>
-
-				<div className="text-center px-4">
-					<Button
-						onClick={() => {
-							nProgress.start();
-							router.push(`/auth/signup`);
-						}}
-						size="lg"
-						className="bg-white text-blue-600 hover:bg-gray-100 px-6 sm:px-8 py-3 w-full sm:w-auto"
-					>
-						Get started now
-					</Button>
 				</div>
 			</div>
 		</section>

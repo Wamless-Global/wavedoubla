@@ -128,103 +128,102 @@ export default function LoginPageContent() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex items-center justify-center px-2 py-10 sm:p-16">
-			<div className="w-full">
-				<div className="max-w-md w-full mx-auto">
-					<div className="bg-white rounded-lg shadow-lg p-8">
-						<div className="text-center mb-8">
-							<h1 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-							<p className="text-gray-600">Sign in to your MonidoublA account</p>
-						</div>
+		<div className="min-h-screen bg-gray-900 py-20 px-6 relative overflow-hidden">
+			{/* Animated Background Elements */}
+			<div className="absolute inset-0 overflow-hidden">
+				<div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-orange-500/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+			</div>
 
-						<form onSubmit={handleSubmit} className="space-y-6">
-							<div>
-								<label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-									Email Address
-								</label>
+			<div className="container mx-auto max-w-md relative z-10">
+				<div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-purple-500/30 shadow-2xl p-8">
+					{/* Header */}
+					<div className="text-center mb-8">
+						<div className="flex justify-center mb-4">
+							<div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-500 rounded-3xl flex items-center justify-center shadow-lg transform rotate-12">
+								<i className="ri-user-3-fill text-white text-2xl"></i>
+							</div>
+						</div>
+						<h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+						<p className="text-gray-300">Sign in to your Wavedoubla account</p>
+					</div>
+
+					{/* Login Form */}
+					<form onSubmit={handleSubmit} className="space-y-6">
+						{/* Email Field */}
+						<div>
+							<label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+								Email Address
+							</label>
+							<div className="relative">
+								<div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+									<i className="ri-mail-line text-gray-400"></i>
+								</div>
 								<input
 									type="email"
 									id="email"
 									name="email"
 									value={formData.email}
 									onChange={handleInputChange}
-									className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-									placeholder="Enter your email"
+									required
+									className="w-full pl-12 pr-4 py-3 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition-all"
+									placeholder="Enter your email address"
 								/>
-								{errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
 							</div>
+						</div>
 
-							<div>
-								<label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-									Password
-								</label>
-								<div className="relative">
-									<input
-										type={showPassword ? 'text' : 'password'}
-										id="password"
-										name="password"
-										value={formData.password}
-										onChange={handleInputChange}
-										className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
-										placeholder="Enter your password"
-									/>
-									<button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowPassword(!showPassword)}>
-										<i className={`${showPassword ? 'ri-eye-off-line' : 'ri-eye-line'} text-gray-400 hover:text-gray-600`}></i>
-									</button>
+						{/* Password Field */}
+						<div>
+							<label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+								Password
+							</label>
+							<div className="relative">
+								<div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+									<i className="ri-lock-line text-gray-400"></i>
 								</div>
-								{errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
+								<input
+									type={showPassword ? 'text' : 'password'}
+									id="password"
+									name="password"
+									value={formData.password}
+									onChange={handleInputChange}
+									required
+									className="w-full pl-12 pr-12 py-3 bg-white/5 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition-all"
+									placeholder="Enter your password"
+								/>
+								<button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-white transition-colors cursor-pointer">
+									<i className={showPassword ? 'ri-eye-off-line' : 'ri-eye-line'}></i>
+								</button>
 							</div>
+						</div>
 
-							<div className="flex items-center justify-between">
-								<div className="flex items-center">
-									<input type="checkbox" id="rememberMe" name="rememberMe" checked={formData.rememberMe} onChange={handleInputChange} className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-									<label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
-										Remember me
-									</label>
-								</div>
-								<CustomLink href="/auth/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
-									Forgot password?
-								</CustomLink>
-							</div>
+						{/* Remember Me & Forgot Password */}
+						<div className="flex items-center justify-between">
+							<label className="flex items-center cursor-pointer">
+								<input type="checkbox" name="rememberMe" checked={formData.rememberMe} onChange={handleInputChange} className="w-4 h-4 text-orange-400 bg-transparent border-gray-600 rounded focus:ring-orange-400 focus:ring-2" />
+								<span className="ml-2 text-sm text-gray-300">Remember me</span>
+							</label>
+							<CustomLink href="/auth/forgot-password" className="text-sm text-orange-400 hover:text-orange-300 transition-colors cursor-pointer">
+								Forgot password?
+							</CustomLink>
+						</div>
 
-							<Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium whitespace-nowrap">
-								Sign In
-							</Button>
-						</form>
+						{/* Sign In Button */}
+						<button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-pink-500 text-white py-3 px-6 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-600 transition-all transform hover:scale-[1.02] cursor-pointer whitespace-nowrap shadow-lg hover:shadow-xl">
+							Sign In
+						</button>
 
-						<div className="mt-6 text-center">
-							<p className="text-sm text-gray-600">
+						{/* Sign Up CustomLink */}
+						<div className="text-center">
+							<p className="text-gray-300">
 								Don't have an account?{' '}
-								<CustomLink href="/auth/signup" className="text-blue-600 hover:text-blue-500 font-medium">
+								<CustomLink href="/auth/signup" className="text-orange-400 hover:text-orange-300 font-medium transition-colors cursor-pointer">
 									Sign up
 								</CustomLink>
 							</p>
 						</div>
-
-						{false && (
-							<div className="mt-6">
-								<div className="relative">
-									<div className="absolute inset-0 flex items-center">
-										<div className="w-full border-t border-gray-300"></div>
-									</div>
-									<div className="relative flex justify-center text-sm">
-										<span className="px-2 bg-white text-gray-500">Or continue with</span>
-									</div>
-								</div>
-
-								<div className="mt-6 grid grid-cols-2 gap-3">
-									<Button type="button" variant="outline" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-										<i className="ri-google-fill mr-2"></i>
-										Google
-									</Button>
-									<Button type="button" variant="outline" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-										<i className="ri-facebook-fill mr-2"></i>
-										Facebook
-									</Button>
-								</div>
-							</div>
-						)}
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

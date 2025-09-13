@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Logo from './Logo';
-import { Button } from '@/components/ui/button';
 import { CustomLink } from './CustomLink';
+import { useRouter } from 'next/navigation';
+import nProgress from 'nprogress';
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const router = useRouter();
 
 	useEffect(() => {
 		// Define the callback before loading script
@@ -31,100 +33,99 @@ export default function Header() {
 	}, []);
 
 	return (
-		<header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-2">
-			<nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-				<div className="flex items-center space-x-4">
+		<header className="bg-gray-900/90 backdrop-blur-md border-b border-purple-800/30 shadow-lg sticky top-0 z-50">
+			<div className="container mx-auto px-6 py-4">
+				<div className="flex items-center justify-between">
 					<Logo size="md" variant="default" alt="" />
 
 					{/* Google Translate container */}
-					<div id="google_translate_element" className="ml-4"></div>
-				</div>
+					{/* <div id="google_translate_element" className="ml-4"></div> */}
 
-				{/* Desktop navigation */}
-				<div className="hidden md:flex items-center space-x-8">
-					<CustomLink href="/" className="text-white hover:text-gray-300">
-						Home
-					</CustomLink>
-					<CustomLink href="/about" className="text-white hover:text-gray-300">
-						About Us
-					</CustomLink>
-					<CustomLink href="/contact" className="text-white hover:text-gray-300">
-						Contact Us
-					</CustomLink>
-					<CustomLink href="/faqs" className="text-white hover:text-gray-300">
-						FAQs
-					</CustomLink>
-				</div>
+					<nav className="hidden md:flex items-center space-x-8">
+						<CustomLink href="/" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer relative group">
+							Home
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all group-hover:w-full"></span>
+						</CustomLink>
+						<CustomLink href="/about" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer relative group">
+							About Us
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all group-hover:w-full"></span>
+						</CustomLink>
+						<CustomLink href="/contact" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer relative group">
+							Contact Us
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all group-hover:w-full"></span>
+						</CustomLink>
+						<CustomLink href="/faqs" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer relative group">
+							FAQs
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all group-hover:w-full"></span>
+						</CustomLink>
+					</nav>
 
-				{/* Desktop buttons */}
-				<div className="hidden md:flex items-center space-x-4">
-					<CustomLink href="/auth/login">
-						<Button variant="outline" size="sm" className="text-white border-white hover:bg-white hover:text-black">
+					<div className="hidden md:flex items-center space-x-4">
+						<button
+							className="text-gray-300 hover:text-orange-400 px-6 py-2 rounded-full font-medium transition-all cursor-pointer whitespace-nowrap"
+							onClick={() => {
+								nProgress.start();
+								router.push(`/auth/login`);
+							}}
+						>
 							Login
-						</Button>
-					</CustomLink>
-					<CustomLink href="/auth/signup">
-						<Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+						</button>
+						<button
+							className="bg-gradient-to-r from-orange-400 to-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:from-orange-500 hover:to-pink-600 transition-all cursor-pointer whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+							onClick={() => {
+								nProgress.start();
+								router.push(`/auth/signup`);
+							}}
+						>
 							Get Started
-						</Button>
-					</CustomLink>
+						</button>
+					</div>
+
+					<button className="md:hidden text-gray-300 hover:text-orange-400 cursor-pointer p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+						<i className={`${isMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-2xl`}></i>
+					</button>
 				</div>
 
-				{/* Mobile menu toggle */}
-				<button className="md:hidden text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-					<i className={`${isMenuOpen ? 'ri-close-line' : 'ri-menu-line'} text-xl`}></i>
-				</button>
-			</nav>
-
-			{/* Mobile menu overlay */}
-			{isMenuOpen && (
-				<div className="md:hidden fixed inset-0 bg-blue-900 min-h-screen z-40">
-					<div>
-						<div className="flex flex-col h-full">
-							{/* Header with logo and close button */}
-							<div className="flex items-center justify-between px-4 py-4 border-b border-blue-800">
-								<div className="flex items-center space-x-2">
-									<Logo size="xl" variant="default" alt="" />
-								</div>
-								<button className="text-white p-2" onClick={() => setIsMenuOpen(false)}>
-									<i className="ri-close-line text-xl"></i>
+				{isMenuOpen && (
+					<div className="md:hidden mt-6 pb-6 border-t border-purple-800/30 pt-6">
+						<div className="flex flex-col space-y-4">
+							<CustomLink href="/" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer">
+								Home
+							</CustomLink>
+							<CustomLink href="/about" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer">
+								About Us
+							</CustomLink>
+							<CustomLink href="/contact" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer">
+								Contact Us
+							</CustomLink>
+							<CustomLink href="/faq" className="text-gray-300 hover:text-orange-400 font-medium transition-colors cursor-pointer">
+								FAQ
+							</CustomLink>
+							<div className="flex flex-col space-y-3 pt-4">
+								<button
+									className="text-gray-300 hover:text-orange-400 px-6 py-2 rounded-full font-medium transition-colors cursor-pointer whitespace-nowrap text-left"
+									onClick={() => {
+										nProgress.start();
+										router.push(`/auth/login`);
+									}}
+								>
+									Login
 								</button>
-							</div>
 
-							{/* Navigation cusCustomLinks */}
-							<div className="flex-1 flex flex-col justify-center px-6 space-y-1">
-								<CustomLink href="/" className="text-white text-center text-md py-4 hover:text-blue-200 transition-colors" onClick={() => setIsMenuOpen(false)}>
-									Home
-								</CustomLink>
-								<CustomLink href="/about" className="text-white text-center text-md py-4 hover:text-blue-200 transition-colors" onClick={() => setIsMenuOpen(false)}>
-									About Us
-								</CustomLink>
-								<CustomLink href="/contact" className="text-white text-center text-md py-4 hover:text-blue-200 transition-colors" onClick={() => setIsMenuOpen(false)}>
-									Contact Us
-								</CustomLink>
-								<CustomLink href="/faqs" className="text-white text-center text-md py-4 hover:text-blue-200 transition-colors" onClick={() => setIsMenuOpen(false)}>
-									FAQs
-								</CustomLink>
-							</div>
-
-							{/* Bottom buttons */}
-							<div className="px-6 pb-8 flex-1 flex flex-col space-y-4">
-								<CustomLink href="/auth/login">
-									<Button variant="outline" className="w-full text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-blue-900 bg-transparent whitespace-nowrap" onClick={() => setIsMenuOpen(false)}>
-										Login
-									</Button>
-								</CustomLink>
-
-								<CustomLink href="/auth/signup">
-									<Button className="w-full bg-white text-blue-900 hover:bg-gray-100 whitespace-nowrap" onClick={() => setIsMenuOpen(false)}>
-										Get Started
-									</Button>
-								</CustomLink>
+								<button
+									className="bg-gradient-to-r from-orange-400 to-pink-500 text-white px-8 py-3 rounded-full font-semibold hover:from-orange-500 hover:to-pink-600 transition-all cursor-pointer whitespace-nowrap shadow-lg"
+									onClick={() => {
+										nProgress.start();
+										router.push(`/auth/signup`);
+									}}
+								>
+									Get Started
+								</button>
 							</div>
 						</div>
 					</div>
-				</div>
-			)}
+				)}
+			</div>
 		</header>
 	);
 }

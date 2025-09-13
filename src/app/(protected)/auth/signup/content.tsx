@@ -244,248 +244,212 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex items-center justify-center px-2 py-10 sm:p-16">
-			<div className="w-full">
-				<div className="max-w-md w-full mx-auto mt-20">
-					<div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
-						<div className="text-center mb-8">
-							<h1 className="text-2xl font-bold text-gray-900 mb-2">Create Account</h1>
-							<p className="text-gray-600">Sign up to get started with MonidoublA</p>
+		<div className="min-h-screen bg-gray-900 flex items-center justify-center px-6 py-12 relative overflow-hidden">
+			<div className="absolute inset-0 overflow-hidden">
+				<div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-500/20 to-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+			</div>
+
+			<div className="w-full max-w-md relative z-10">
+				<div className="bg-white/10 backdrop-blur-md border border-purple-800/30 rounded-3xl p-4 md:p-8 shadow-2xl">
+					<div className="text-center mb-8">
+						<div className="flex justify-center mb-4">
+							<div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg transform rotate-12">
+								<i className="ri-heart-3-fill text-white text-2xl"></i>
+							</div>
+						</div>
+						<h1 className="text-3xl font-bold text-white mb-2">Join Wavedoubla</h1>
+						<p className="text-gray-300">Create your account and start your financial journey</p>
+					</div>
+
+					{/* Referral display */}
+					{referralData && referralData.status === 'success' && (
+						<div className="space-y-2 mb-4">
+							<label htmlFor="referral-name" className="block text-sm font-medium text-gray-700">
+								Referred by
+							</label>
+							<div className="relative flex items-center">
+								<i className="ri-user-line absolute left-3 h-5 w-5 text-gray-700" />
+								<input id="referral-name" type="text" value={referralName} disabled readOnly className="w-full px-3 py-2 border rounded-md pl-10 cursor-not-allowed text-gray-500 bg-gray-100" />
+							</div>
+						</div>
+					)}
+
+					<form onSubmit={handleSubmit} className="space-y-6">
+						<div className="grid grid-cols-2 gap-4">
+							<div>
+								<label className="block text-gray-300 text-sm font-medium mb-2">First Name</label>
+								<input
+									type="text"
+									name="firstName"
+									value={formData.firstName}
+									onChange={handleInputChange}
+									className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+									placeholder="Enter first name"
+									required
+								/>
+								{errors.firstName && <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>}
+							</div>
+							<div>
+								<label className="block text-gray-300 text-sm font-medium mb-2">Last Name</label>
+								<input
+									type="text"
+									name="lastName"
+									value={formData.lastName}
+									onChange={handleInputChange}
+									className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+									placeholder="Enter last name"
+									required
+								/>
+								{errors.lastName && <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>}
+							</div>
 						</div>
 
-						{/* Referral display */}
-						{referralData && referralData.status === 'success' && (
-							<div className="space-y-2 mb-4">
-								<label htmlFor="referral-name" className="block text-sm font-medium text-gray-700">
-									Referred by
-								</label>
-								<div className="relative flex items-center">
-									<i className="ri-user-line absolute left-3 h-5 w-5 text-gray-700" />
-									<input id="referral-name" type="text" value={referralName} disabled readOnly className="w-full px-3 py-2 border rounded-md pl-10 cursor-not-allowed text-gray-500 bg-gray-100" />
-								</div>
-							</div>
-						)}
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Email Address</label>
+							<input
+								type="email"
+								name="email"
+								value={formData.email}
+								onChange={handleInputChange}
+								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Enter your email"
+								required
+							/>
+							{errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+						</div>
 
-						<form onSubmit={handleSubmit} className="space-y-6">
-							<div className="grid grid-cols-2 gap-4">
-								<div>
-									<label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-										First Name
-									</label>
-									<input
-										type="text"
-										id="firstName"
-										name="firstName"
-										value={formData.firstName}
-										onChange={handleInputChange}
-										className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`}
-										placeholder="Enter first name"
-									/>
-									{errors.firstName && <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>}
-								</div>
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Country</label>
+							<select
+								id="country"
+								name="country"
+								value={selectedCountry}
+								onChange={handleCountryChange}
+								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+							>
+								<option value="">Select country</option>
+								<option value="decaa447-5a78-42e1-9d4a-af500cf59689">Liberia</option>
+							</select>
+							{errors.country && <p className="mt-1 text-sm text-red-500">{errors.country}</p>}
+						</div>
 
-								<div>
-									<label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-										Last Name
-									</label>
-									<input
-										type="text"
-										id="lastName"
-										name="lastName"
-										value={formData.lastName}
-										onChange={handleInputChange}
-										className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`}
-										placeholder="Enter last name"
-									/>
-									{errors.lastName && <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>}
-								</div>
-							</div>
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Phone Number</label>
+							<input
+								type="tel"
+								name="phone"
+								value={formData.phone}
+								onChange={handleInputChange}
+								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Enter your phone number"
+								required
+							/>
+							{errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
+						</div>
 
-							<div>
-								<label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
-									Country
-								</label>
-								<select id="country" name="country" value={selectedCountry} onChange={handleCountryChange} className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.country ? 'border-red-500' : 'border-gray-300'}`}>
-									<option value="selected disabled">Select country</option>
-									<option value="decaa447-5a78-42e1-9d4a-af500cf59689">Liberia</option>
-								</select>
-								{errors.country && <p className="mt-1 text-sm text-red-500">{errors.country}</p>}
-							</div>
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Mobile Money Number</label>
+							<input
+								type="text"
+								name="momo_number"
+								value={formData.momo_number}
+								onChange={handleInputChange}
+								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Enter your mobile money number"
+							/>
+							{errors.momo_number && <p className="mt-1 text-sm text-red-500">{errors.momo_number}</p>}
+						</div>
 
-							<div>
-								<label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-									Email Address
-								</label>
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Mobile Money Name</label>
+							<input
+								type="text"
+								name="momo_name"
+								value={formData.momo_name}
+								onChange={handleInputChange}
+								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Enter your mobile money name"
+							/>
+							{errors.momo_name && <p className="mt-1 text-sm text-red-500">{errors.momo_name}</p>}
+						</div>
+
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Mobile Money Provider</label>
+							<input
+								type="text"
+								name="momo_provider"
+								value={formData.momo_provider}
+								onChange={handleInputChange}
+								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Enter your mobile money provider"
+							/>
+							{errors.momo_provider && <p className="mt-1 text-sm text-red-500">{errors.momo_provider}</p>}
+						</div>
+
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Password</label>
+							<div className="relative">
 								<input
-									type="email"
-									id="email"
-									name="email"
-									value={formData.email}
+									type={showPassword ? 'text' : 'password'}
+									name="password"
+									value={formData.password}
 									onChange={handleInputChange}
-									className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-									placeholder="Enter your email"
+									className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all pr-12"
+									placeholder="Create a strong password"
+									required
 								/>
-								{errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+								<button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer">
+									<i className={`${showPassword ? 'ri-eye-off-line' : 'ri-eye-line'} text-lg`}></i>
+								</button>
 							</div>
+						</div>
 
-							<div>
-								<label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-									Phone Number
-								</label>
+						<div>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Confirm Password</label>
+							<div className="relative">
 								<input
-									type="tel"
-									id="phone"
-									name="phone"
-									value={formData.phone}
+									type={showConfirmPassword ? 'text' : 'password'}
+									name="confirmPassword"
+									value={formData.confirmPassword}
 									onChange={handleInputChange}
-									className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
-									placeholder="Enter your phone number"
+									className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all pr-12"
+									placeholder="Confirm your password"
+									required
 								/>
-								{errors.phone && <p className="mt-1 text-sm text-red-500">{errors.phone}</p>}
+								<button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-orange-400 transition-colors cursor-pointer">
+									<i className={`${showConfirmPassword ? 'ri-eye-off-line' : 'ri-eye-line'} text-lg`}></i>
+								</button>
 							</div>
+						</div>
 
-							<div>
-								<label htmlFor="momo_number" className="block text-sm font-medium text-gray-700 mb-2">
-									Mobile Money Number
-								</label>
-								<input
-									type="number"
-									id="momo_number"
-									name="momo_number"
-									value={formData.momo_number}
-									onChange={handleInputChange}
-									className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.momo_number ? 'border-red-500' : 'border-gray-300'}`}
-									placeholder="Enter your mobile money number"
-								/>
-								{errors.momo_number && <p className="mt-1 text-sm text-red-500">{errors.momo_number}</p>}
-							</div>
-
-							<div>
-								<label htmlFor="momo_name" className="block text-sm font-medium text-gray-700 mb-2">
-									Mobile Money Name
-								</label>
-								<input
-									type="text"
-									id="momo_name"
-									name="momo_name"
-									value={formData.momo_name}
-									onChange={handleInputChange}
-									className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.momo_name ? 'border-red-500' : 'border-gray-300'}`}
-									placeholder="Enter your mobile money name"
-								/>
-								{errors.momo_name && <p className="mt-1 text-sm text-red-500">{errors.momo_name}</p>}
-							</div>
-
-							<div>
-								<label htmlFor="momo_provider" className="block text-sm font-medium text-gray-700 mb-2">
-									Mobile Money Provider
-								</label>
-								<input
-									type="text"
-									id="momo_provider"
-									name="momo_provider"
-									value={formData.momo_provider}
-									onChange={handleInputChange}
-									className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.momo_provider ? 'border-red-500' : 'border-gray-300'}`}
-									placeholder="Enter your mobile money provider"
-								/>
-								{errors.momo_provider && <p className="mt-1 text-sm text-red-500">{errors.momo_provider}</p>}
-							</div>
-
-							<div>
-								<label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-									Password
-								</label>
-								<div className="relative">
-									<input
-										type={showPassword ? 'text' : 'password'}
-										id="password"
-										name="password"
-										value={formData.password}
-										onChange={handleInputChange}
-										className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
-										placeholder="Enter your password"
-									/>
-									<button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowPassword(!showPassword)}>
-										<i className={`${showPassword ? 'ri-eye-off-line' : 'ri-eye-line'} text-gray-400 hover:text-gray-600`}></i>
-									</button>
-								</div>
-								{errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
-							</div>
-
-							<div>
-								<label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-									Confirm Password
-								</label>
-								<div className="relative">
-									<input
-										type={showConfirmPassword ? 'text' : 'password'}
-										id="confirmPassword"
-										name="confirmPassword"
-										value={formData.confirmPassword}
-										onChange={handleInputChange}
-										className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
-										placeholder="Confirm your password"
-									/>
-									<button type="button" className="absolute inset-y-0 right-0 pr-3 flex items-center" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-										<i className={`${showConfirmPassword ? 'ri-eye-off-line' : 'ri-eye-line'} text-gray-400 hover:text-gray-600`}></i>
-									</button>
-								</div>
-								{errors.confirmPassword && <p className="mt-1 text-sm text-red-500">{errors.confirmPassword}</p>}
-							</div>
-
-							<div className="flex items-start">
-								<input type="checkbox" id="agreeTerms" name="agreeTerms" checked={formData.agreeTerms} onChange={handleInputChange} className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-								<label htmlFor="agreeTerms" className="ml-2 block text-sm text-gray-700">
-									I agree to the{' '}
-									<CustomLink href="#" className="text-blue-600 hover:text-blue-500">
-										Terms of Service
-									</CustomLink>{' '}
-									and{' '}
-									<CustomLink href="#" className="text-blue-600 hover:text-blue-500">
-										Privacy Policy
-									</CustomLink>
-								</label>
-							</div>
-							{errors.agreeTerms && <p className="text-sm text-red-500">{errors.agreeTerms}</p>}
-
-							<Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium whitespace-nowrap">
-								Create Account
-							</Button>
-						</form>
-
-						<div className="mt-6 text-center">
-							<p className="text-sm text-gray-600">
-								Already have an account?{' '}
-								<CustomLink href="/auth/login" className="text-blue-600 hover:text-blue-500 font-medium">
-									Sign in
+						<div className="flex items-start space-x-3">
+							<input type="checkbox" id="terms" name="agreeTerms" checked={formData.agreeTerms} onChange={handleInputChange} className="mt-1 w-5 h-5 text-orange-400 bg-gray-800 border-gray-600 rounded focus:ring-orange-400 focus:ring-2" required />
+							<label htmlFor="terms" className="text-sm text-gray-300">
+								I agree to the{' '}
+								<CustomLink href="/terms" className="text-orange-400 hover:text-orange-300 cursor-pointer">
+									Terms of Service
+								</CustomLink>{' '}
+								and{' '}
+								<CustomLink href="/privacy" className="text-orange-400 hover:text-orange-300 cursor-pointer">
+									Privacy Policy
 								</CustomLink>
-							</p>
+							</label>
 						</div>
 
-						{false && (
-							<div className="mt-6">
-								<div className="relative">
-									<div className="absolute inset-0 flex items-center">
-										<div className="w-full border-t border-gray-300"></div>
-									</div>
-									<div className="relative flex justify-center text-sm">
-										<span className="px-2 bg-white text-gray-500">Or continue with</span>
-									</div>
-								</div>
+						<button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-pink-500 text-white py-3 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-600 transition-all cursor-pointer whitespace-nowrap shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+							Create Account
+						</button>
+					</form>
 
-								<div className="mt-6 grid grid-cols-2 gap-3">
-									<Button type="button" variant="outline" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-										<i className="ri-google-fill mr-2"></i>
-										Google
-									</Button>
-									<Button type="button" variant="outline" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
-										<i className="ri-facebook-fill mr-2"></i>
-										Facebook
-									</Button>
-								</div>
-							</div>
-						)}
+					<div className="mt-8 text-center">
+						<p className="text-gray-300">
+							Already have an account?{' '}
+							<CustomLink href="/login" className="text-orange-400 hover:text-orange-300 font-medium transition-colors cursor-pointer">
+								Sign In
+							</CustomLink>
+						</p>
 					</div>
 				</div>
 			</div>

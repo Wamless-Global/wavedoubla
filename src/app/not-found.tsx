@@ -1,41 +1,111 @@
 'use client';
 
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { CustomLink } from '@/components/CustomLink';
-import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
+import nProgress from 'nprogress';
 
 export default function NotFound() {
+	const router = useRouter();
 	return (
-		<div className="min-h-screen  flex items-center justify-center px-4">
-			<div className="max-w-md w-full text-center">
+		<div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
+			<Header />
+
+			{/* Animated Background Elements */}
+			<div className="fixed inset-0 overflow-hidden pointer-events-none">
+				<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-orange-400/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-pink-500/10 to-orange-400/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+			</div>
+
+			<main className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-6 text-center py-20">
+				{/* 404 Number */}
 				<div className="mb-8">
-					<h1 className="text-9xl font-bold text-blue-600 dark:text-blue-500 mb-4">404</h1>
-					<h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">Page Not Found</h2>
-					<p className="text-gray-600 dark:text-gray-400 mb-8">The page you're looking for doesn't exist or has been moved.</p>
+					<h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold bg-gradient-to-r from-orange-400 via-pink-500 to-purple-600 bg-clip-text text-transparent mb-4 leading-none">404</h1>
+					<div className="w-32 h-1 bg-gradient-to-r from-orange-400 to-pink-500 mx-auto rounded-full"></div>
 				</div>
 
-				<div className="space-y-4">
-					<CustomLink href="/">
-						<Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-							<i className="ri-home-line w-4 h-4 flex items-center justify-center mr-2"></i>
-							Go Home
-						</Button>
+				{/* Error Message */}
+				<div className="mb-12 max-w-2xl">
+					<h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Page Not Found</h2>
+					<p className="text-lg text-gray-300 leading-relaxed">Oops! The page you're looking for seems to have vanished into the digital void. Don't worry, we'll help you find your way back home.</p>
+				</div>
+
+				{/* Action Buttons */}
+				<div className="flex flex-col sm:flex-row gap-4 mb-12">
+					<CustomLink href="/" className="group cursor-pointer">
+						<button className="bg-gradient-to-r from-orange-400 to-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:from-orange-500 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 whitespace-nowrap flex items-center space-x-2">
+							<i className="ri-home-line text-lg"></i>
+							<span>Go Home</span>
+						</button>
 					</CustomLink>
 
-					<Button variant="outline" onClick={() => window.history.back()} className="w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-						<i className="ri-arrow-left-line w-4 h-4 flex items-center justify-center mr-2"></i>
-						Go Back
-					</Button>
+					<button
+						onClick={() => {
+							nProgress.start();
+							router.back();
+						}}
+						className="bg-white/10 backdrop-blur-md border border-purple-400/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center space-x-2 group"
+					>
+						<i className="ri-arrow-left-line text-lg group-hover:-translate-x-1 transition-transform"></i>
+						<span>Go Back</span>
+					</button>
 				</div>
 
-				<div className="mt-8 text-sm text-gray-500 dark:text-gray-400">
-					<p>
-						Need help?{' '}
-						<CustomLink href="/contact" className="text-blue-600 dark:text-blue-500 hover:underline">
-							Contact support
-						</CustomLink>
-					</p>
+				{/* Help Section */}
+				<div className="bg-white/5 backdrop-blur-md border border-purple-400/30 rounded-3xl p-8 max-w-lg">
+					<h3 className="text-xl font-semibold text-white mb-4 flex items-center justify-center space-x-2">
+						<i className="ri-customer-service-2-line text-orange-400"></i>
+						<span>Need Help?</span>
+					</h3>
+					<p className="text-gray-300 mb-6">If you believe this is an error, please don't hesitate to reach out to our support team.</p>
+					<CustomLink href="/contact" className="cursor-pointer">
+						<button className="bg-gradient-to-r from-purple-500 to-blue-600 text-white px-6 py-3 rounded-full font-medium hover:from-purple-600 hover:to-blue-700 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center space-x-2 mx-auto">
+							<i className="ri-mail-line"></i>
+							<span>Contact Support</span>
+						</button>
+					</CustomLink>
 				</div>
-			</div>
+
+				{/* Popular Pages */}
+				<div className="mt-16 w-full max-w-4xl">
+					<h3 className="text-2xl font-semibold text-white mb-8 text-center">Popular Pages</h3>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+						<CustomLink href="/about" className="group cursor-pointer">
+							<div className="bg-white/5 backdrop-blur-md border border-purple-400/30 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-r from-orange-400 to-pink-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+									<i className="ri-team-line text-white text-xl"></i>
+								</div>
+								<h4 className="text-lg font-semibold text-white mb-2">About Us</h4>
+								<p className="text-gray-300 text-sm">Learn more about our mission and team</p>
+							</div>
+						</CustomLink>
+
+						<CustomLink href="/contact" className="group cursor-pointer">
+							<div className="bg-white/5 backdrop-blur-md border border-purple-400/30 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+									<i className="ri-customer-service-line text-white text-xl"></i>
+								</div>
+								<h4 className="text-lg font-semibold text-white mb-2">Contact Us</h4>
+								<p className="text-gray-300 text-sm">Get in touch with our support team</p>
+							</div>
+						</CustomLink>
+
+						<CustomLink href="/faqs" className="group cursor-pointer">
+							<div className="bg-white/5 backdrop-blur-md border border-purple-400/30 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-orange-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+									<i className="ri-question-answer-line text-white text-xl"></i>
+								</div>
+								<h4 className="text-lg font-semibold text-white mb-2">FAQs</h4>
+								<p className="text-gray-300 text-sm">Find answers to common questions</p>
+							</div>
+						</CustomLink>
+					</div>
+				</div>
+			</main>
+
+			<Footer />
 		</div>
 	);
 }

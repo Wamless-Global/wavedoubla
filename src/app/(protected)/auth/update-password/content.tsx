@@ -146,16 +146,19 @@ export default function UpdatePasswordPageContent() {
 
 	if (pageStatus === 'loading') {
 		return (
-			<div className="min-h-screen bg-gray-100 flex items-center justify-center">
-				<div className="max-w-md w-full mx-auto px-4 py-12">
-					<div className="bg-white rounded-lg shadow-lg p-10">
-						<div className="text-center">
-							<h1 className="text-2xl font-bold text-gray-900  mb-8">Update Password</h1>
+			<div className="min-h-screen bg-gray-900 py-20 px-6 relative overflow-hidden">
+				<div className="absolute inset-0 overflow-hidden">
+					<div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+					<div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-500/20 to-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+					<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+				</div>
 
-							<div className="flex items-center justify-center gap-2">
-								<Loader2 className="h-5 w-5 animate-spin" />
-								<h2 className="text-lg">Loading...</h2>
-							</div>
+				<div className="w-full max-w-md relative z-10 mx-auto">
+					<div className="bg-white/10 backdrop-blur-md border border-purple-800/30 rounded-3xl p-10 shadow-2xl text-center">
+						<h1 className="text-2xl font-bold text-white mb-8">Update Password</h1>
+						<div className="flex items-center justify-center gap-2">
+							<Loader2 className="h-5 w-5 animate-spin text-white" />
+							<h2 className="text-lg text-white">Loading...</h2>
 						</div>
 					</div>
 				</div>
@@ -164,59 +167,70 @@ export default function UpdatePasswordPageContent() {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex items-center justify-center px-2 py-10 sm:p-16">
-			<div className="w-full">
-				<div className="max-w-md w-full mx-auto">
-					<div className="bg-white rounded-lg shadow-lg p-8">
-						<div className="text-center mb-8">
-							<h1 className="text-2xl font-bold text-gray-900 mb-2">Update Password</h1>
-							<p className="text-gray-600">Enter your new password below.</p>
-						</div>
-						<form onSubmit={onSubmit} className="space-y-6">
-							<div>
-								<label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 mb-2">
-									New Password
-								</label>
-								<input
-									type="password"
-									id="newPassword"
-									name="newPassword"
-									value={newPassword}
-									onChange={(e) => setNewPassword(e.target.value)}
-									className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-									placeholder="Enter new password"
-									required
-								/>
+		<div className="min-h-screen bg-gray-900 flex items-center justify-center px-6 py-12 relative overflow-hidden">
+			<div className="absolute inset-0 overflow-hidden">
+				<div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-400/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+				<div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-500/20 to-orange-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+			</div>
+
+			<div className="w-full max-w-md relative z-10">
+				<div className="bg-white/10 backdrop-blur-md border border-purple-800/30 rounded-3xl p-8">
+					<div className="text-center mb-8">
+						<div className="flex justify-center mb-4">
+							<div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg transform rotate-12">
+								<i className="ri-lock-line text-white text-2xl"></i>
 							</div>
-							<div>
-								<label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-									Confirm Password
-								</label>
-								<input
-									type="password"
-									id="confirmPassword"
-									name="confirmPassword"
-									value={confirmPassword}
-									onChange={(e) => setConfirmPassword(e.target.value)}
-									className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-									placeholder="Confirm new password"
-									required
-								/>
-							</div>
-							{error && <p className="mt-1 text-sm text-red-500">{error}</p>}
-							{success && <p className="mt-1 text-sm text-green-600">{success}</p>}
-							<button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium" disabled={loading}>
-								{loading ? 'Updating...' : 'Update Password'}
-							</button>
-						</form>
-						<div className="mt-6 text-center">
-							<p className="text-sm text-gray-600">
-								Back to{' '}
-								<a href="/auth/login" className="text-blue-600 hover:text-blue-500 font-medium">
-									Sign in
-								</a>
-							</p>
 						</div>
+						<h1 className="text-3xl font-bold text-white mb-2">Update Password</h1>
+						<p className="text-gray-300">Enter your new password below.</p>
+					</div>
+
+					<form onSubmit={onSubmit} className="space-y-6">
+						<div>
+							<label htmlFor="newPassword" className="block text-sm font-medium text-gray-300 mb-2">
+								New Password
+							</label>
+							<input
+								type="password"
+								id="newPassword"
+								name="newPassword"
+								value={newPassword}
+								onChange={(e) => setNewPassword(e.target.value)}
+								className="w-full px-3 py-2 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Enter new password"
+								required
+							/>
+						</div>
+						<div>
+							<label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 mb-2">
+								Confirm Password
+							</label>
+							<input
+								type="password"
+								id="confirmPassword"
+								name="confirmPassword"
+								value={confirmPassword}
+								onChange={(e) => setConfirmPassword(e.target.value)}
+								className="w-full px-3 py-2 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
+								placeholder="Confirm new password"
+								required
+							/>
+						</div>
+						{error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+						{success && <p className="mt-1 text-sm text-green-600">{success}</p>}
+						<button type="submit" className="w-full bg-gradient-to-r from-orange-400 to-pink-500 text-white py-3 px-4 rounded-xl font-semibold hover:from-orange-500 hover:to-pink-600 transition-all shadow-lg" disabled={loading}>
+							{loading ? 'Updating...' : 'Update Password'}
+						</button>
+					</form>
+
+					<div className="mt-6 text-center">
+						<p className="text-sm text-gray-300">
+							Back to{' '}
+							<a href="/auth/login" className="text-orange-400 hover:text-orange-300 font-medium">
+								Sign in
+							</a>
+						</p>
 					</div>
 				</div>
 			</div>
