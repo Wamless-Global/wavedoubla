@@ -78,14 +78,6 @@ export default function TeamSection() {
 								<div className="text-orange-400 font-semibold mb-4">{member.role}</div>
 
 								<p className="text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors">{member.bio}</p>
-
-								<div className="flex space-x-3">
-									{Object.entries(member.social).map(([platform, url]) => (
-										<a key={platform} href={url} className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gradient-to-r hover:from-orange-400 hover:to-pink-500 transition-all cursor-pointer group-hover:scale-110">
-											<i className={`ri-${platform}-fill text-white text-lg`}></i>
-										</a>
-									))}
-								</div>
 							</div>
 						</div>
 					))}
@@ -103,13 +95,13 @@ export default function TeamSection() {
 							</div>
 						</div>
 
-						<p className="text-xl text-gray-300 mb-8 leading-relaxed">
+						<p className="text-lg text-gray-300 mb-8 leading-relaxed">
 							Unlock the power of our <span className="font-semibold text-blue-600">5-Generation Referral Bonus</span>! When you invite friends to join Wavedoubla, you earn bonuses not just from your direct referrals, but also from the people they invite—up to five generations deep.
 						</p>
-						<p className="text-xl text-gray-300 mb-8 leading-relaxed">
+						<p className="text-lg text-gray-300 mb-8 leading-relaxed">
 							Grow your network and multiply your earnings: every new member in your referral tree can contribute to your bonus, whether you invited them directly or they joined through your extended network. The more your community grows, the more you benefit!
 						</p>
-						<p className="text-xl text-gray-300 mb-8 leading-relaxed">Start building your legacy today. Invite others, help them succeed, and enjoy rewards across five levels of connections.</p>
+						<p className="text-lg text-gray-300 mb-8 leading-relaxed">Start building your legacy today. Invite others, help them succeed, and enjoy rewards across five levels of connections.</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 justify-center">
 							<CustomLink href={'/auth/login'}>

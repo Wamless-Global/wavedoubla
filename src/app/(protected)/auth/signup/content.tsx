@@ -123,29 +123,6 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 
 		if (!formData.phone.trim()) {
 			newErrors.phone = 'Phone number is required';
-		} else {
-			try {
-				let countryCode: CountryCode = 'LR'; // Default to Liberia
-				if (selectedCountry === 'decaa447-5a78-42e1-9d4a-af500cf59689') countryCode = 'LR';
-				let phone = formData.phone.trim();
-				// If phone does not start with +, try to convert to international format
-				if (!phone.startsWith('+')) {
-					// Remove leading zero if present
-					if (phone.startsWith('0')) {
-						phone = phone.substring(1);
-					}
-					// Prepend country calling code for Liberia (+231)
-					if (countryCode === 'LR') {
-						phone = '+231' + phone;
-					}
-					// Add more country mappings here if needed
-				}
-				if (!isValidPhoneNumber(phone)) {
-					newErrors.phone = 'Phone number is invalid';
-				}
-			} catch {
-				newErrors.phone = 'Phone number is invalid';
-			}
 		}
 
 		if (!formData.password) {
@@ -330,7 +307,7 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
 							>
 								<option value="">Select country</option>
-								<option value="decaa447-5a78-42e1-9d4a-af500cf59689">Liberia</option>
+								<option value="decaa447-5a78-42e1-9d4a-af500cf59689">Nigeria</option>
 							</select>
 							{errors.country && <p className="mt-1 text-sm text-red-500">{errors.country}</p>}
 						</div>

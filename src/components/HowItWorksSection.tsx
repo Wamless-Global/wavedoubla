@@ -18,19 +18,19 @@ export default function HowItWorksSection() {
 			number: '02',
 			icon: 'ri-search-fill',
 			title: 'Explore Causes',
-			description: 'Browse verified campaigns and find causes that resonate with your values.',
+			description: 'Choose an amount and get matched to invest to another participant.',
 		},
 		{
 			number: '03',
 			icon: 'ri-hand-heart-fill',
 			title: 'Make Impact',
-			description: 'Contribute securely and watch your donations create real-world change.',
+			description: 'Get matched to receive help from others in the system.',
 		},
 		{
 			number: '04',
 			icon: 'ri-trophy-fill',
 			title: 'Track Progress',
-			description: 'Monitor the impact of your contributions and celebrate achievements together.',
+			description: 'Earn direct and indirect multilevel bonuses.',
 		},
 	];
 

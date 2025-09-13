@@ -3,7 +3,6 @@ import Footer from '@/components/Footer';
 import ContactHero from './ContactHero';
 import ContactForm from './ContactForm';
 import ContactInfo from './ContactInfo';
-import LocationSection from './LocationSection';
 
 export default function ContactPage() {
 	return (
@@ -18,7 +17,6 @@ export default function ContactPage() {
 				<div className="relative z-10">
 					<ContactForm />
 					<ContactInfo />
-					<LocationSection />
 				</div>
 			</div>
 			<Footer />

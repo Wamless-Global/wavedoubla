@@ -20,13 +20,13 @@ const faqData: FAQItem[] = [
 		id: '2',
 		category: 'Getting Started',
 		question: 'What is the minimum donation required?',
-		answer: 'The minimum donation to join Wavedoubla is $5 LRD (Liberian Dollars). This makes our platform accessible to everyone who wants to start their journey toward financial empowerment.',
+		answer: 'The minimum donation to join Wavedoubla is ₦10,000. This makes our platform accessible to everyone who wants to start their journey toward financial empowerment.',
 	},
 	{
 		id: '3',
 		category: 'Getting Started',
 		question: 'How does the tier system work?',
-		answer: 'Our tier system allows you to start with a minimum donation of $5 LRD and grow through different levels. Each tier offers different benefits and earning potentials. As you progress through tiers, you unlock higher earning opportunities and referral bonuses.',
+		answer: 'Our tier system allows you to start with a minimum donation of ₦10,000 and grow through different levels. Each tier offers different benefits and earning potentials. As you progress through tiers, you unlock higher earning opportunities and referral bonuses.',
 	},
 	{
 		id: '4',
