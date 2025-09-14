@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
-import { isValidPhoneNumber, CountryCode } from 'libphonenumber-js';
-import { Button } from '@/components/ui/button';
 import { fetchWithAuth } from '@/lib/fetchWithAuth';
 import { handleFetchMessage } from '@/lib/helpers';
 import { logger } from '@/lib/logger';
@@ -327,7 +325,7 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 						</div>
 
 						<div>
-							<label className="block text-gray-300 text-sm font-medium mb-2">bank account number</label>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Bank Account Number</label>
 							<input
 								type="text"
 								name="momo_number"
@@ -340,7 +338,7 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 						</div>
 
 						<div>
-							<label className="block text-gray-300 text-sm font-medium mb-2">bank account name</label>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Bank Account Name</label>
 							<input
 								type="text"
 								name="momo_name"
@@ -353,7 +351,7 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 						</div>
 
 						<div>
-							<label className="block text-gray-300 text-sm font-medium mb-2">bank name</label>
+							<label className="block text-gray-300 text-sm font-medium mb-2">Bank Name</label>
 							<input
 								type="text"
 								name="momo_provider"
@@ -423,7 +421,7 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 					<div className="mt-8 text-center">
 						<p className="text-gray-300">
 							Already have an account?{' '}
-							<CustomLink href="/login" className="text-orange-400 hover:text-orange-300 font-medium transition-colors cursor-pointer">
+							<CustomLink href="/auth/login" className="text-orange-400 hover:text-orange-300 font-medium transition-colors cursor-pointer">
 								Sign In
 							</CustomLink>
 						</p>

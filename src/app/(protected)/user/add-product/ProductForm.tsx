@@ -43,7 +43,45 @@ const initialFormData: FormData = {
 	},
 };
 
-const locations = ['Monrovia', 'Gbarnga', 'Buchanan', 'Kakata', 'Zwedru', 'Harper', 'Voinjama', 'Robertsport', 'Sanniquellie', 'Greenville'];
+const locations = [
+	'Abuja (FCT)',
+	'Abia - Umuahia',
+	'Adamawa - Yola',
+	'Akwa Ibom - Uyo',
+	'Anambra - Awka',
+	'Bauchi - Bauchi',
+	'Bayelsa - Yenagoa',
+	'Benue - Makurdi',
+	'Borno - Maiduguri',
+	'Cross River - Calabar',
+	'Delta - Asaba',
+	'Ebonyi - Abakaliki',
+	'Edo - Benin City',
+	'Ekiti - Ado-Ekiti',
+	'Enugu - Enugu',
+	'Gombe - Gombe',
+	'Imo - Owerri',
+	'Jigawa - Dutse',
+	'Kaduna - Kaduna',
+	'Kano - Kano',
+	'Katsina - Katsina',
+	'Kebbi - Birnin Kebbi',
+	'Kogi - Lokoja',
+	'Kwara - Ilorin',
+	'Lagos - Lagos',
+	'Nasarawa - Lafia',
+	'Niger - Minna',
+	'Ogun - Abeokuta',
+	'Ondo - Akure',
+	'Osun - Osogbo',
+	'Oyo - Ibadan',
+	'Plateau - Jos',
+	'Rivers - Port Harcourt',
+	'Sokoto - Sokoto',
+	'Taraba - Jalingo',
+	'Yobe - Damaturu',
+	'Zamfara - Gusau',
+];
 
 const categories = ['Electronics', 'Clothing', 'Vehicles', 'Houses', 'Furniture', 'Books', 'Sports', 'Tools', 'Jewelry', 'Other'];
 
