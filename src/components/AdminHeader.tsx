@@ -75,9 +75,9 @@ export function AdminHeader({ onMenuClick, onNotificationClick, unreadNotificati
 				</div>
 
 				<div className="flex items-center gap-2">
-					<button onClick={toggleTheme} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors" title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
+					{/* <button onClick={toggleTheme} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors" title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
 						{theme === 'light' ? <i className="ri-moon-line w-5 h-5 flex items-center justify-center text-gray-600 dark:text-gray-300"></i> : <i className="ri-sun-line w-5 h-5 flex items-center justify-center text-gray-600 dark:text-gray-300"></i>}
-					</button>
+					</button> */}
 
 					<button onClick={onNotificationClick} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg relative transition-colors">
 						<i className="ri-notification-3-line w-5 h-5 flex items-center justify-center text-gray-600 dark:text-gray-300"></i>

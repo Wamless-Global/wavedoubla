@@ -102,9 +102,9 @@ export function AccountHeader({ onMenuClick, onNotificationClick, unreadNotifica
 				</div>
 
 				<div className="flex items-center gap-2">
-					<button onClick={toggleTheme} className="p-2 hover:bg-accent rounded-lg transition-colors" title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
+					{/* <button onClick={toggleTheme} className="p-2 hover:bg-accent rounded-lg transition-colors" title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
 						{theme === 'light' ? <i className="ri-moon-line w-5 h-5 flex items-center justify-center text-foreground"></i> : <i className="ri-sun-line w-5 h-5 flex items-center justify-center text-foreground"></i>}
-					</button>
+					</button> */}
 
 					<button onClick={onNotificationClick} className="p-2 hover:bg-accent rounded-lg relative transition-colors">
 						<i className="ri-notification-3-line w-5 h-5 flex items-center justify-center text-foreground"></i>

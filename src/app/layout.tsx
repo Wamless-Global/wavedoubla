@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
 			</head>
 			<body className={`${montserrat.className} text-sm`} suppressHydrationWarning>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+				<ThemeProvider attribute="class" defaultTheme="light">
 					<Suspense>
 						<ProgressBar />
 						<div className="min-h-screen flex flex-col">{children}</div>
