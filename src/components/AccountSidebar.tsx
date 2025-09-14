@@ -29,7 +29,7 @@ const navigationItems = [
 		category: 'Settings',
 		items: [
 			{ name: 'Profile', href: '/user/profile', icon: 'ri-user-smile-line' },
-			{ name: 'Payment Methods', href: '/user/add-momo-details', icon: 'ri-bank-card-line' },
+			{ name: 'Payment Methods', href: '/user/add-bank-details', icon: 'ri-bank-card-line' },
 			{ name: 'Security', href: '/user/change-password', icon: 'ri-shield-keyhole-line' },
 		],
 	},

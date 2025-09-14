@@ -36,23 +36,23 @@ export default function AddBankAccountPage() {
 	const validateForm = (): boolean => {
 		const newErrors: FormErrors = {};
 
-		// // Momo Name validation
+		// // Bank account name validation
 		if (!formData.momoName.trim()) {
-			newErrors.momoName = 'Momo name is required';
+			newErrors.momoName = 'Bank account name is required';
 		} else if (formData.momoName.length < 2) {
-			newErrors.momoName = 'Momo name must be at least 2 characters';
+			newErrors.momoName = 'Bank account name must be at least 2 characters';
 		} else if (!/^[a-zA-Z\s]+$/.test(formData.momoName)) {
-			newErrors.momoName = 'Momo name must contain only letters and spaces';
+			newErrors.momoName = 'Bank account name must contain only letters and spaces';
 		}
 
-		// Momo Number validation
+		// Bank account number validation
 		if (formData.momoNumber && !/^\d{10,}$/.test(formData.momoNumber)) {
-			newErrors.momoNumber = 'MoMo number must be at least 10 digits';
+			newErrors.momoNumber = 'Bank account number must be at least 10 digits';
 		}
 
-		// Momo Provider validation
+		// Bank validation
 		if (formData.momoNumber && !formData.momoProvider.trim()) {
-			newErrors.momoProvider = 'MoMo provider is required if MoMo number is provided';
+			newErrors.momoProvider = 'Bank is required if Bank account number is provided';
 		}
 
 		setErrors(newErrors);
@@ -111,18 +111,18 @@ export default function AddBankAccountPage() {
 						<i className="ri-arrow-left-line w-4 h-4 flex items-center justify-center"></i>
 						Back to Profile
 					</CustomLink>
-					<h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Add Momo Details</h1>
-					<p className="text-gray-600 dark:text-gray-400">Add your Momo details to receive payments</p>
+					<h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Add Bank Details</h1>
+					<p className="text-gray-600 dark:text-gray-400">Add your Bank Details to receive payments</p>
 				</div>
 
 				{/* Form */}
 				<Card className="bg-white dark:bg-gray-800 border-0 shadow-sm">
 					<CardContent className="p-6">
 						<form onSubmit={handleSubmit} className="space-y-6">
-							{/* Momo Name */}
+							{/* Bank account name */}
 							<div>
 								<label htmlFor="momoName" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-									Momo Name *
+									Bank account name *
 								</label>
 								<div className="relative">
 									<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -133,7 +133,7 @@ export default function AddBankAccountPage() {
 										type="text"
 										value={formData.momoName}
 										onChange={(e) => handleInputChange('momoName', e.target.value)}
-										placeholder="Enter momo name"
+										placeholder="Enter Bank account name"
 										className={`w-full pl-10 pr-3 py-2 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
 											errors.momoName ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600'
 										}`}
@@ -143,10 +143,10 @@ export default function AddBankAccountPage() {
 								{errors.momoName && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.momoName}</p>}
 							</div>
 
-							{/* MoMo Number */}
+							{/* Bank account number */}
 							<div>
 								<label htmlFor="momoNumber" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-									MoMo Number
+									Bank account number
 								</label>
 								<div className="relative">
 									<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -157,7 +157,7 @@ export default function AddBankAccountPage() {
 										type="text"
 										value={formData.momoNumber}
 										onChange={(e) => handleInputChange('momoNumber', e.target.value)}
-										placeholder="Enter MoMo number"
+										placeholder="Enter Bank account number"
 										className={`w-full pl-10 pr-3 py-2 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
 											errors.momoNumber ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600'
 										}`}
@@ -167,10 +167,10 @@ export default function AddBankAccountPage() {
 								{errors.momoNumber && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.momoNumber}</p>}
 							</div>
 
-							{/* MoMo Provider */}
+							{/* Bank */}
 							<div>
 								<label htmlFor="momoProvider" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-									MoMo Provider
+									Bank
 								</label>
 								<div className="relative">
 									<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -181,7 +181,7 @@ export default function AddBankAccountPage() {
 										type="text"
 										value={formData.momoProvider}
 										onChange={(e) => handleInputChange('momoProvider', e.target.value)}
-										placeholder="Enter MoMo provider (e.g. MTN, Vodafone)"
+										placeholder="Enter Bank (e.g. MTN, Vodafone)"
 										className={`w-full pl-10 pr-3 py-2 border rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
 											errors.momoProvider ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 dark:border-gray-600'
 										}`}
@@ -197,7 +197,7 @@ export default function AddBankAccountPage() {
 									<i className="ri-shield-check-line w-5 h-5 flex items-center justify-center text-blue-600 dark:text-blue-400 mt-0.5"></i>
 									<div>
 										<h4 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-1">Security & Privacy</h4>
-										<p className="text-sm text-blue-800 dark:text-blue-200">Your Momo account information is encrypted and securely stored. We never share your financial details with third parties.</p>
+										<p className="text-sm text-blue-800 dark:text-blue-200">Your Bank account information is encrypted and securely stored. We never share your financial details with third parties.</p>
 									</div>
 								</div>
 							</div>
@@ -207,12 +207,12 @@ export default function AddBankAccountPage() {
 								{isLoading ? (
 									<div className="flex items-center gap-2">
 										<div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-										<span>Adding Momo Details...</span>
+										<span>Adding Bank Details...</span>
 									</div>
 								) : (
 									<>
 										<i className="ri-bank-line w-4 h-4 flex items-center justify-center mr-2"></i>
-										Save Momo Details
+										Save Bank Details
 									</>
 								)}
 							</Button>
@@ -223,11 +223,11 @@ export default function AddBankAccountPage() {
 				{/* Help Section */}
 				<div className="mt-6 bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
 					<h3 className="font-medium text-gray-900 dark:text-white mb-2">Need Help?</h3>
-					<p className="text-sm text-gray-600 dark:text-gray-400 mb-3">If you're having trouble adding your Momo details, please check:</p>
+					<p className="text-sm text-gray-600 dark:text-gray-400 mb-3">If you're having trouble adding your Bank Details, please check:</p>
 					<ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
 						<li className="flex items-start gap-2">
 							<i className="ri-checkbox-circle-line w-4 h-4 flex items-center justify-center text-blue-600 dark:text-blue-400 mt-0.5"></i>
-							Ensure your Momo number is correct
+							Ensure your Bank account number is correct
 						</li>
 						<li className="flex items-start gap-2">
 							<i className="ri-checkbox-circle-line w-4 h-4 flex items-center justify-center text-blue-600 dark:text-blue-400 mt-0.5"></i>

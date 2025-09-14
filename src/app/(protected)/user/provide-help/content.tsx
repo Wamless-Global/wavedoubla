@@ -839,15 +839,15 @@ export default function ProvideHelpPage({ hideHeader = false }: { hideHeader?: b
 																				</span>
 																			</div>
 																			<div>
-																				<span className="text-sm text-gray-600 dark:text-gray-400">Momo Name: </span>
+																				<span className="text-sm text-gray-600 dark:text-gray-400">Bank account name: </span>
 																				<span className="text-sm text-gray-900 dark:text-white">{user.momo_name}</span>
 																			</div>
 																			<div>
-																				<span className="text-sm text-gray-600 dark:text-gray-400">Momo Provider: </span>
+																				<span className="text-sm text-gray-600 dark:text-gray-400">Bank: </span>
 																				<span className="text-sm text-gray-900 dark:text-white">{user.momo_provider}</span>
 																			</div>
 																			<div>
-																				<span className="text-sm text-gray-600 dark:text-gray-400">Momo Number: </span>
+																				<span className="text-sm text-gray-600 dark:text-gray-400">Bank account number: </span>
 																				<span className="text-sm text-gray-900 dark:text-white">{user.momo_number}</span>
 																			</div>
 																			<div>

@@ -892,11 +892,11 @@ export default function SettingsPage() {
 								<span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${systemSettings.enforcePhoneBeforePHGH ? 'translate-x-6' : 'translate-x-1'}`} />
 							</button>
 						</div>
-						{/* Enforce Mobile Money Details Before PH/GH */}
+						{/* Enforce bank account Details Before PH/GH */}
 						<div className="flex items-center justify-between">
 							<div>
-								<label className="text-sm font-medium text-gray-700 dark:text-gray-300">Enforce Momo Details Before PH/GH</label>
-								<p className="text-sm text-gray-500 dark:text-gray-400">Require Mobile Money details before PH or GH</p>
+								<label className="text-sm font-medium text-gray-700 dark:text-gray-300">Enforce Bank Details Before PH/GH</label>
+								<p className="text-sm text-gray-500 dark:text-gray-400">Require bank account details before PH or GH</p>
 							</div>
 							<button
 								onClick={() => setSystemSettings((prev) => ({ ...prev, enforceMomoBeforePHGH: !prev.enforceMomoBeforePHGH }))}

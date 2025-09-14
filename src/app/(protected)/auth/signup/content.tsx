@@ -144,13 +144,13 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 		}
 
 		if (!formData.momo_number.trim()) {
-			newErrors.momo_number = 'Mobile Money number is required';
+			newErrors.momo_number = 'bank account number is required';
 		}
 		if (!formData.momo_name.trim()) {
-			newErrors.momo_name = 'Mobile Money name is required';
+			newErrors.momo_name = 'bank account name is required';
 		}
 		if (!formData.momo_provider.trim()) {
-			newErrors.momo_provider = 'Mobile Money provider is required';
+			newErrors.momo_provider = 'bank name is required';
 		}
 
 		setErrors(newErrors);
@@ -327,40 +327,40 @@ export default function SignupPageContent({ referralData, countries }: SignupPag
 						</div>
 
 						<div>
-							<label className="block text-gray-300 text-sm font-medium mb-2">Mobile Money Number</label>
+							<label className="block text-gray-300 text-sm font-medium mb-2">bank account number</label>
 							<input
 								type="text"
 								name="momo_number"
 								value={formData.momo_number}
 								onChange={handleInputChange}
 								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
-								placeholder="Enter your mobile money number"
+								placeholder="Enter your bank account number"
 							/>
 							{errors.momo_number && <p className="mt-1 text-sm text-red-500">{errors.momo_number}</p>}
 						</div>
 
 						<div>
-							<label className="block text-gray-300 text-sm font-medium mb-2">Mobile Money Name</label>
+							<label className="block text-gray-300 text-sm font-medium mb-2">bank account name</label>
 							<input
 								type="text"
 								name="momo_name"
 								value={formData.momo_name}
 								onChange={handleInputChange}
 								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
-								placeholder="Enter your mobile money name"
+								placeholder="Enter your bank account name"
 							/>
 							{errors.momo_name && <p className="mt-1 text-sm text-red-500">{errors.momo_name}</p>}
 						</div>
 
 						<div>
-							<label className="block text-gray-300 text-sm font-medium mb-2">Mobile Money Provider</label>
+							<label className="block text-gray-300 text-sm font-medium mb-2">bank name</label>
 							<input
 								type="text"
 								name="momo_provider"
 								value={formData.momo_provider}
 								onChange={handleInputChange}
 								className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400/20 transition-all"
-								placeholder="Enter your mobile money provider"
+								placeholder="Enter your bank name"
 							/>
 							{errors.momo_provider && <p className="mt-1 text-sm text-red-500">{errors.momo_provider}</p>}
 						</div>

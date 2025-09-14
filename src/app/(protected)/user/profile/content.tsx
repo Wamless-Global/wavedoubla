@@ -223,14 +223,14 @@ export default function Content() {
 						<CardContent className="p-6">
 							<div className="flex items-center justify-between mb-4">
 								<h3 className="text-lg font-semibold text-card-foreground">Wallet Information</h3>
-								<CustomLink href="/user/add-momo-details" className="text-primary hover:text-primary/90 p-1 rounded-lg hover:bg-accent transition-colors">
+								<CustomLink href="/user/add-bank-details" className="text-primary hover:text-primary/90 p-1 rounded-lg hover:bg-accent transition-colors">
 									<i className="ri-edit-line w-5 h-5 flex items-center justify-center"></i>
 								</CustomLink>
 							</div>
 
 							<div className="space-y-4">
 								<div>
-									<label className="block text-sm font-medium text-muted-foreground mb-1">Momo Name</label>
+									<label className="block text-sm font-medium text-muted-foreground mb-1">Bank account name</label>
 									<div className="flex items-center gap-2">
 										<i className="ri-user-line text-muted-foreground w-4 h-4 flex items-center justify-center"></i>
 										<span className="text-card-foreground">{profileData.momo_name}</span>
@@ -238,7 +238,7 @@ export default function Content() {
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium text-muted-foreground mb-1">Momo Number</label>
+									<label className="block text-sm font-medium text-muted-foreground mb-1">Bank account number</label>
 									<div className="flex items-center gap-2">
 										<i className="ri-bank-card-line text-muted-foreground w-4 h-4 flex items-center justify-center"></i>
 										<span className="text-card-foreground">{profileData.momo_number}</span>
@@ -246,7 +246,7 @@ export default function Content() {
 								</div>
 
 								<div>
-									<label className="block text-sm font-medium text-muted-foreground mb-1">Momo Provider</label>
+									<label className="block text-sm font-medium text-muted-foreground mb-1">Bank</label>
 									<div className="flex items-center gap-2">
 										<i className="ri-bank-line text-muted-foreground w-4 h-4 flex items-center justify-center"></i>
 										<span className="text-card-foreground">{profileData.momo_provider}</span>

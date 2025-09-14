@@ -503,11 +503,11 @@ export default function GetHelpDetail({ phId }: GetHelpDetailProps) {
 												<span className="text-foreground">{detail.phoneNumber}</span>
 											</div>
 											<div className="flex justify-between text-sm">
-												<span className="text-muted-foreground"> Momo Provider:</span>
+												<span className="text-muted-foreground"> Bank:</span>
 												<span className="text-foreground">{detail.momo_provider}</span>
 											</div>
 											<div className="flex justify-between text-sm">
-												<span className="text-muted-foreground">Momo Number:</span>
+												<span className="text-muted-foreground">Bank account number:</span>
 												<span className="text-foreground">{detail.momo_number}</span>
 											</div>
 											<div className="flex justify-between text-sm">

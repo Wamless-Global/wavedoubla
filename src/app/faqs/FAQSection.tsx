@@ -44,7 +44,7 @@ const faqData: FAQItem[] = [
 		id: '6',
 		category: 'Security & Safety',
 		question: 'How can I withdraw my earnings?',
-		answer: 'Withdrawals can be processed through various secure methods including mobile money, bank transfers, and other approved payment systems. Processing times and minimum withdrawal amounts may vary by tier level.',
+		answer: 'Withdrawals can be processed through various secure methods including bank transfers, and other approved payment systems. Processing times and minimum withdrawal amounts may vary by tier level.',
 	},
 	{
 		id: '7',

@@ -23,7 +23,7 @@ const pageTitle = {
 	'/user/ph-history': 'PH History',
 	'/user/gh-history': 'GH History',
 	'/user/change-password': 'Change Password',
-	'/user/add-momo-details': 'Add Momo Details',
+	'/user/add-bank-details': 'Add Bank Details',
 };
 
 export function AccountHeader({ onMenuClick, onNotificationClick, unreadNotifications }: AccountHeaderProps) {

@@ -26,7 +26,7 @@ const navigationItems = [
 		category: 'User Management',
 		items: [
 			{ name: 'Profile', href: '/profile', icon: 'ri-user-line' },
-			{ name: 'Add Momo Details', href: '/add-momo-details', icon: 'ri-bank-line' },
+			{ name: 'Add Bank Details', href: '/add-bank-details', icon: 'ri-bank-line' },
 			{ name: 'Change Password', href: '/change-password', icon: 'ri-lock-line' },
 			{ name: 'Log Out', href: '/logout', icon: 'ri-logout-box-line' },
 		],
