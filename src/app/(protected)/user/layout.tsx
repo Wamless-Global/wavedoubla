@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AccountSidebar } from '@/components/AccountSidebar';
 import { AccountHeader } from '@/components/AccountHeader';
 import { NotificationPanel } from '@/components/NotificationPanel';
