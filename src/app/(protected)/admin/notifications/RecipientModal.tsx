@@ -27,6 +27,7 @@ export function RecipientModal({ isOpen, onClose, onSelect, currentSelection }: 
 	const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
 	const [sendToAll, setSendToAll] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [total, setTotal] = useState(0);
 
 	const [users, setUsers] = useState<User[]>([]);
 	const [usersLoading, setUsersLoading] = useState(false);
@@ -44,6 +45,7 @@ export function RecipientModal({ isOpen, onClose, onSelect, currentSelection }: 
 				}
 				const data = await res.json();
 				setUsers(Array.isArray(data?.data?.users) ? data.data.users : []);
+				setTotal(data?.data?.totalCount ? data.data.totalCount : 0);
 			})
 			.catch((err) => {
 				setUsers([]);
@@ -134,7 +136,7 @@ export function RecipientModal({ isOpen, onClose, onSelect, currentSelection }: 
 								className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
 							/>
 							<label htmlFor="sendToAll" className="text-sm font-medium text-gray-900 dark:text-white">
-								Send to all users ({users.length} users)
+								Send to all users ({total} users)
 							</label>
 						</div>
 					</div>

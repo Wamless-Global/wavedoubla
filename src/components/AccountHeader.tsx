@@ -94,9 +94,6 @@ export function AccountHeader({ onMenuClick, onNotificationClick, unreadNotifica
 						<i className="ri-menu-line w-5 h-5 flex items-center justify-center text-foreground"></i>
 					</button>
 
-					<div className="flex items-center">
-						<Logo size="sm" variant="default" alt="" className="" />
-					</div>
 					<h1 className="text-xl lg:text-2xl font-bold text-foreground">{title}</h1>
 					<div id="google_translate_element" className=""></div>
 				</div>
